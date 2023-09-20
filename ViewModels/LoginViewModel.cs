@@ -8,7 +8,7 @@ namespace webapi.event_manha.ViewModels
 
         public string? Email { get; set; }
 
-        [Required(ErrorMessage ="Senha Incorreta")]
+        [Required(ErrorMessage ="Senha Obrigatoria")]
 
         public string? Senha { get; set; }
     }

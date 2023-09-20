@@ -15,14 +15,14 @@ namespace webapi.event_manha.Controllers
 
 
         public UsuarioController()
-        { 
-        _usuarioRepository = new UsuarioRepository();
+        {
+            _usuarioRepository = new UsuarioRepository();
 
         }
 
         [HttpPost]
 
-        public IActionResult Post (Usuario usuario)
+        public IActionResult Post(Usuario usuario)
         {
             try
             {
@@ -33,7 +33,44 @@ namespace webapi.event_manha.Controllers
             catch (Exception e)
             {
 
-                return  BadRequest(e.Message);
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpGet]
+
+        public IActionResult Get(string email, string senha)
+
+        {
+            try
+            {
+                Usuario usuarioBuscado = _usuarioRepository.BuscarPorEmailESenha(email, senha);
+                return Ok(usuarioBuscado);
+
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.Message);
+
+            }
+
+        }
+
+        [HttpGet("{id}")]
+
+        public IActionResult Get(Guid id) 
+        
+        {
+            try
+            {
+                Usuario usuario = _usuarioRepository.BuscarPorId(id);
+                return Ok(usuario);
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.Message);
             }
         }
 
