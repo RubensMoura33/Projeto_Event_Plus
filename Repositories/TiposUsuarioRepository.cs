@@ -20,12 +20,33 @@ namespace webapi.event_manha.Repositories
 
         public TiposUsuario BuscarPorId(Guid id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                TiposUsuario tipoBuscado = _eventContext!.TiposUsuario.Select(u => new TiposUsuario
+                {
+                    IdTipoUsuario = u.IdTipoUsuario,
+                    TituloTipoUsuario = u.TituloTipoUsuario
+                   
+                }).FirstOrDefault(u => u.IdTipoUsuario == id)!;
+
+                if (tipoBuscado != null)
+                {
+                    return tipoBuscado;
+                }
+
+                return null!;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public void Cadastrar(TiposUsuario tipoUsuario)
         {
-            _eventContext.TiposUsuario.Add(tipoUsuario);
+            _eventContext!.TiposUsuario.Add(tipoUsuario);
             _eventContext.SaveChanges();
         }
 

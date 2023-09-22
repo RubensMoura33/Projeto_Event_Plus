@@ -9,39 +9,40 @@ namespace webapi.event_manha.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
-    public class TiposUsuarioController : ControllerBase
+    public class EventoController : ControllerBase
     {
-        private ITiposUsuarioRepository _tiposUsuarioRepository;
+        private IEventoRepository _eventoRepository;
 
-        public TiposUsuarioController()
+        public EventoController()
         {
-            _tiposUsuarioRepository = new TiposUsuarioRepository();
+            _eventoRepository = new EventoRepository();
         }
+
         [HttpPost]
 
-        public IActionResult Post( TiposUsuario tiposUsuario)
+        public IActionResult Post (Evento evento)
         {
             try
             {
-                _tiposUsuarioRepository.Cadastrar(tiposUsuario);
-
-                    return StatusCode(201);
+                _eventoRepository.Cadastrar(evento);
+                return StatusCode(201);
             }
             catch (Exception e)
             {
 
-                 return BadRequest(e.Message);
+                return BadRequest(e.Message);
             }
         }
 
-        [HttpGet("{id}")]
+        [HttpGet ("{id}")]
 
-        public IActionResult Get (Guid id)
+        public IActionResult Get(Guid id)
         {
             try
             {
-                TiposUsuario tipoUsuario = _tiposUsuarioRepository.BuscarPorId(id);
-                return Ok(tipoUsuario);
+               Evento eventoBuscado = _eventoRepository.BuscarPorId(id);
+                return Ok(eventoBuscado);
+
             }
             catch (Exception e)
             {

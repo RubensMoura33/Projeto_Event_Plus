@@ -52,9 +52,9 @@ builder.Services.AddSwaggerGen(options =>
     options.SwaggerDoc("v1", new OpenApiInfo
     {
         Version = "v1",
-        Title = "API filme manhã",
-        Description = "API para gerenciamento de filmes - Introdução da sprint 2 - Backend api",
-        TermsOfService = new Uri("https://github.com/GabrielVictor0"),
+        Title = "API Event +",
+        Description = "Api para site Event +",
+        TermsOfService = new Uri("https://github.com/RubensMoura33"),
         Contact = new OpenApiContact
         {
             Name = "Senai Informática",

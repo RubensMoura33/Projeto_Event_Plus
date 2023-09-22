@@ -18,7 +18,7 @@ namespace webapi.event_manha.Repositories
         {
             try
             {
-                Usuario usuarioBuscado = _eventContext.Usuario.Select(u => new Usuario
+                Usuario usuarioBuscado = _eventContext!.Usuario.Select(u => new Usuario
                 {
                     IdUsuario = u.IdUsuario,
                     NomeUsuario = u.NomeUsuario,
@@ -58,7 +58,7 @@ namespace webapi.event_manha.Repositories
         {
             try
             {
-                Usuario usuarioBuscado = _eventContext.Usuario.Select(u => new Usuario
+                Usuario usuarioBuscado = _eventContext!.Usuario.Select(u => new Usuario
                 {
                     IdUsuario = u.IdUsuario,
                     NomeUsuario = u.NomeUsuario,
@@ -95,11 +95,11 @@ namespace webapi.event_manha.Repositories
             {
                 usuario.Senha = Criptografia.GerarHash(usuario.Senha!);
 
-                _eventContext.Usuario.Add(usuario);
+                _eventContext!.Usuario.Add(usuario);
 
                 _eventContext.SaveChanges();
             }
-            catch (Exception e)
+            catch (Exception )
             {
 
                 throw;
